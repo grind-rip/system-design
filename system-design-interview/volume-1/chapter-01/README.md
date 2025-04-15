@@ -46,6 +46,7 @@ In order to facilitate horizontal scaling, a load balancer is used. A load balan
 To support failover and redundancy of the data tier, database replication is used. Database replication uses a master (or write replica), which generally only supports write operations (INSERT, UPDATE, DELETE) and a slave (read replica), which receives data from the master database and only supports read operations. Since most applications require a much higher ratio of reads to writes, this has the advantage of better performance, better reliability, and high availability.
 
 >How does routing to a write/read replica work?
+
 This can done at the application level, using a dedicated proxy server, or DNS-based routing.
 
 ## Cache
@@ -57,6 +58,7 @@ A cache is a temporary storage area that stores the result of expensive response
 A Content delivery network (CDN) is a network of geographically dispersed servers used to deliver static content. CDN servers cache static content like images, videos, CSS, JavaScript files, etc.
 
 >How does the closest CDN get used?
+
 There are several mechanisms to connect you to the closest/optimal edge server: DNS-Based geolocation, Anycast routing, and real-time telemetry.
 
 ## Stateless web tier
