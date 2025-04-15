@@ -4,7 +4,7 @@ This chapter describes how to scale a system from a single server to a system su
 
 ## Single server setup
 
-First, we start with a single server. This server runs everthing: web app, database, cache, etc.
+First, we start with a single server. This server runs everything: web app, database, cache, etc.
 
 Request flow:
 1. A client accesses the website through a domain name.
@@ -35,7 +35,7 @@ Typically, you will want to use a relational database, however, non-relational d
 
 Vertical scaling, also referred to as "scale up", is the process of adding more power (CPU, memory, etc.) to your servers. Horizontal scaling, also referred to as "scale out", is the process of adding more servers into your pool of resources.
 
-Vertical scaling is less complex, but there are physical limitations to CPU and memory. Also, vertical scaling does not accomodate failover and redundancy well. Horizontal scaling is more desirable for large scale applications due to the limitations of vertical scaling.
+Vertical scaling is less complex, but there are physical limitations to CPU and memory. Also, vertical scaling does not accommodate failover and redundancy well. Horizontal scaling is more desirable for large scale applications due to the limitations of vertical scaling.
 
 ## Load balancer
 
@@ -43,10 +43,9 @@ In order to facilitate horizontal scaling, a load balancer is used. A load balan
 
 ## Database replication
 
-To support failover and redundancy of the data tier, database replication is used. Database replication uses a master (or write replica), which generally only supports write operations (INSERT, UPDATE, DELETE) and a slave (read replica), which recieves data from the master database and only supports read operations. Since most applications require a much higher ratio of reads to writes, this has the advantage of better performance, better reliability, and high availability.
+To support failover and redundancy of the data tier, database replication is used. Database replication uses a master (or write replica), which generally only supports write operations (INSERT, UPDATE, DELETE) and a slave (read replica), which receives data from the master database and only supports read operations. Since most applications require a much higher ratio of reads to writes, this has the advantage of better performance, better reliability, and high availability.
 
 >How does routing to a write/read replica work?
-
 This can done at the application level, using a dedicated proxy server, or DNS-based routing.
 
 ## Cache
@@ -58,12 +57,11 @@ A cache is a temporary storage area that stores the result of expensive response
 A Content delivery network (CDN) is a network of geographically dispersed servers used to deliver static content. CDN servers cache static content like images, videos, CSS, JavaScript files, etc.
 
 >How does the closest CDN get used?
-
 There are several mechanisms to connect you to the closest/optimal edge server: DNS-Based geolocation, Anycast routing, and real-time telemetry.
 
 ## Stateless web tier
 
-In order to scaling the web tier horizontally, it must be stateless. A good practice is to store session data in persistent storage such as relational database or NoSQL. Therefore, each web server in the cluster can access state data from the data tier. This is called a stateless web tier. A stateful server remembers client data (state) from one request to the next. A stateless server keeps no state information. With a stateless web tier, autoscaling can be utilized based on traffic load.
+In order to scale the web tier horizontally, it must be stateless. A good practice is to store session data in persistent storage such as a relational database or NoSQL. Therefore, each web server in the cluster can access state data from the data tier. This is called a stateless web tier. A stateful server remembers client data (state) from one request to the next. A stateless server keeps no state information. With a stateless web tier, autoscaling can be utilized based on traffic load.
 
 ## Data centers
 
@@ -71,7 +69,7 @@ Having multiple data centers allows for multi-region redundancy. GeoDNS can be u
 
 ## Message queue
 
-Using a message queue is a key strategy employed by many real-world distributed systems to decouple its components.
+Using a message queue is a key strategy employed by many real-world distributed systems to decouple their components.
 
 A message queue is a durable component, stored in memory, that supports asynchronous communication. It serves as a buffer and distributes asynchronous requests.
 
